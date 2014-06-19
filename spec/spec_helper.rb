@@ -6,7 +6,7 @@ require 'webmock'
 require 'webmock/rspec'
 
 RSpec.configure do |config|
-  config.color_enabled = true
+  config.color = true
 end
 
 def stub_get(path, fixture_name)

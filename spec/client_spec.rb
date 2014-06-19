@@ -24,4 +24,19 @@ describe 'Client' do
       escrows.escrow_list[1].actions.release_url.should eq "/api/escrow_release/2/"
     end
   end
+
+  describe "#wallet" do
+    before do
+      stub_get('/api/wallet/', 'wallet.json')
+    end
+
+    it 'Gets information about the token owners wallet balance' do
+      expect { client.wallet }.not_to raise_error
+
+      wallet = client.wallet
+      wallet.should be_a Hashie::Mash
+      # wallet.wallet_list.total.balance.should eq "0.05"
+      # wallet .wallet_list.address.should eq "15HfUY9LwwewaWwrKRXzE91tjDnHmye1hc"
+    end
+  end
 end
